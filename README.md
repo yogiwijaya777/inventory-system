@@ -229,7 +229,8 @@ const getUser = async (userId) => {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
 };
-```## Validation
+```
+## Validation
 
 Request data is validated using [Joi](https://joi.dev/). Check the [documentation](https://joi.dev/api/) for more details on how to write Joi validation schemas.
 
