@@ -8,8 +8,8 @@ Inventory Management for employee
 ## Installation
 Clone the project : 
 ```bash
-https://github.com/yogiwijaya777/Week4-Backend-Server-API.git
-cd Week4-Backend-Server-API/inventory-system
+https://github.com/yogiwijaya777/inventory-system.git
+cd inventory-system
 ```
 
 Install the depedencies with npm :
