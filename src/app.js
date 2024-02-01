@@ -21,6 +21,9 @@ if (config.env !== 'test') {
   app.use(morgan.errorHandler);
 }
 
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+
 // set security HTTP headers
 app.use(helmet());
 
@@ -45,7 +48,9 @@ app.use(cors());
 app.options('*', cors());
 
 app.get('/', (req, res) => {
-  res.send('<h1> Hello World </h1> <a href="/api-docs">Documentation</a>');
+  res.render('index', {
+    title: 'Welcome!',
+  });
 });
 
 const swaggerDocs = YAML.load('./swagger.yaml');
