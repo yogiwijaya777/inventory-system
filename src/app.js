@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const httpStatus = require('http-status');
 const helmet = require('helmet');
@@ -21,7 +22,7 @@ if (config.env !== 'test') {
   app.use(morgan.errorHandler);
 }
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '../public')));
 app.set('view engine', 'ejs');
 
 // set security HTTP headers
