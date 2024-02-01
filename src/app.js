@@ -45,7 +45,7 @@ app.use(cors());
 app.options('*', cors());
 
 app.get('/', (req, res) => {
-  res.send('hello world');
+  res.send('<h1> Hello World </h1> <a href="/api-docs">Documentation</a>');
 });
 
 const swaggerDocs = YAML.load('./swagger.yaml');
