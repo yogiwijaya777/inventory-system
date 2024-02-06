@@ -72,6 +72,10 @@ const updateUser = async (userId, updateBody) => {
 
   if (!user) throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
 
+  if (updateBody.password) {
+    updateBody.password = bcrypt.hashSync(updateBody.password, 8);
+  }
+
   const updatedUser = await prisma.user.update({
     where: { id: userId },
     data: updateBody,
