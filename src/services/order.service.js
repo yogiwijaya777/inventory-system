@@ -27,8 +27,8 @@ const queryOrders = async (filter, options) => {
       orderItems: true,
     },
     orderBy,
-    skip,
     take: Number(take),
+    skip,
   });
 
   if (orders.length === 0) throw new ApiError(httpStatus.NOT_FOUND, 'Orders not found');

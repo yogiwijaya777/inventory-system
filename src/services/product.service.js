@@ -34,10 +34,9 @@ const queryProducts = async (filters, options) => {
       user: { select: { name: true } },
     },
     orderBy,
-    skip,
     take: Number(take),
+    skip,
   });
-
   if (products.length === 0) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Product not found');
   }

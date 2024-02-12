@@ -30,8 +30,8 @@ const queryCategorys = async (filter, options) => {
     },
     include: { products: true },
     orderBy,
-    skip,
     take: Number(take),
+    skip,
   });
 
   if (categorys.length === 0) {

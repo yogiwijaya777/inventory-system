@@ -42,8 +42,8 @@ const queryUsers = async (filter, options) => {
       products: true,
     },
     orderBy,
-    skip,
     take: Number(take),
+    skip,
   });
 
   if (users.length === 0) throw new ApiError(httpStatus.NOT_FOUND, 'Users not found');
