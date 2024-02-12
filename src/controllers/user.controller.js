@@ -19,7 +19,7 @@ const getAllUsers = catchAsync(async (req, res) => {
     sort: req.query.sort === 'a-z' ? { name: 'asc' } : { name: 'desc' },
   };
 
-  options.skip = (options.page - 1) * (options.take || 10);
+  options.skip = (options.page - 1) * options.take;
 
   const users = await userService.queryUsers(filter, options);
 

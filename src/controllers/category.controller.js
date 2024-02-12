@@ -20,7 +20,7 @@ const getAllCategorys = catchAsync(async (req, res) => {
     sort: req.query.sort === 'latest' ? { createdAt: 'desc' } : { createdAt: 'asc' },
   };
 
-  options.skip = (options.page - 1) * (options.take || 10);
+  options.skip = (options.page - 1) * options.take;
 
   const { sort } = req.query;
 

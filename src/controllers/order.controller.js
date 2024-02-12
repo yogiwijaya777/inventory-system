@@ -20,6 +20,8 @@ const getAllOrders = catchAsync(async (req, res) => {
     sort: req.query.sort === 'latest' ? { date: 'desc' } : { date: 'asc' },
   };
 
+  options.skip = (options.page - 1) * options.take;
+
   const orders = await orderService.queryOrders(filter, options);
 
   res.status(httpStatus.OK).send({
