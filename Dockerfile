@@ -4,8 +4,11 @@ FROM node:20-alpine AS base
 WORKDIR /app
 
 COPY package*.json .
+COPY prisma ./prisma/
 
 RUN npm install
+
+COPY ./prisma .
 
 COPY . .
 
@@ -22,7 +25,7 @@ CMD ["npm", "run", "dev"]
 FROM base AS production
 
 #Change directory ownership
-RUN chown -R node /app
+RUN chown -R node:node /app
 
 USER node
 
