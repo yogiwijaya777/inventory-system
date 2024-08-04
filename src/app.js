@@ -52,10 +52,13 @@ app.get('/', (req, res) => {
   res.send('Hello world');
 });
 
-const swaggerDocs = YAML.load('./swagger.yaml');
+if (config.env !== 'development') {
+  const swaggerDocs = YAML.load('./swagger.yaml');
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+}
+
 // v1 api routes
 app.use('/v1', router);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // send 404 error jika route tidak ada
 app.use((req, res, next) => {
