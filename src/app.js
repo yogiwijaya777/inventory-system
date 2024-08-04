@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
   res.send('Hello world');
 });
 
-if (config.env !== 'development') {
+if (config.env === 'development') {
   const swaggerDocs = YAML.load('./swagger.yaml');
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 }
