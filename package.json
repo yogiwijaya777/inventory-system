@@ -11,7 +11,7 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "start": "pm2 start ecosystem.config.json --no-daemon",
+    "start": "pm2 start ./dist/app/ecosystem.config.json --no-daemon",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -21,7 +21,10 @@
     "test": "jest -i --colors --verbose --detectOpenHandles",
     "test:watch": "jest -i --watchAll",
     "coverage": "jest -i --coverage",
-    "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls"
+    "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
+    "transpile": "babel src --out-dir dist --copy-files",
+    "build": "npm run transpile && parcel build dist/index.js --out-dir dist/app --target node && cp ecosystem.config.json dist/app ",
+    "postinstall": "prisma generate"
   },
   "keywords": [
     "node",
@@ -75,6 +78,9 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
     "coveralls": "^3.0.7",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -90,6 +96,7 @@
     "nodemon": "^2.0.0",
     "prettier": "^2.0.5",
     "prisma": "^5.3.1",
-    "supertest": "^6.0.1"
+    "supertest": "^6.0.1",
+    "parcel-bundler": "^1.12.5"
   }
 }
