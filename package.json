@@ -23,7 +23,7 @@
     "coverage": "jest -i --coverage",
     "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
     "transpile": "babel src --out-dir dist --copy-files",
-    "build": "npm run transpile && parcel build dist/index.js --out-dir dist/app --target node && cp ecosystem.config.json dist/app ",
+    "build": "npm run transpile && parcel build dist/index.js --out-dir dist/app --target node && cp ecosystem.config.json dist/app && npm run postinstall",
     "postinstall": "prisma generate"
   },
   "keywords": [
