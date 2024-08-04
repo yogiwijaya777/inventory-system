@@ -21,6 +21,7 @@
     "test": "jest -i --colors --verbose --detectOpenHandles",
     "test:watch": "jest -i --watchAll",
     "coverage": "jest -i --coverage",
+    "postinstall": "prisma generate",
     "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls"
   },
   "keywords": [
